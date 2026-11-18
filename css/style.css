@@ -1,0 +1,557 @@
+/* ==========================================================================
+   1. VARIÁVEIS CSS (:root) E RESET BÁSICO
+   ========================================================================== */
+:root {
+  --cor-primaria: #0f172a;
+  --cor-secundaria: #1e293b;
+  --cor-destaque: #0284c7;
+  --cor-destaque-clara: #38bdf8;
+  --cor-fundo: #f8fafc;
+  --cor-superficie: #ffffff;
+  --cor-texto: #334155;
+  --cor-texto-suave: #64748b;
+  --cor-borda: #e2e8f0;
+  --sombra-card: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --raio-borda: 10px;
+  --transicao: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO E NAVEGAÇÃO (POSITION: STICKY)
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 1rem 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+header .container > a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+header .container > a strong {
+  color: var(--cor-destaque-clara);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+header nav a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transicao);
+}
+
+header nav a:hover,
+header nav a:focus {
+  color: var(--cor-destaque-clara);
+}
+
+/* ==========================================================================
+   3. HERO SECTION E GALERIA DE DESTAQUES
+   ========================================================================== */
+.hero {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+  color: #ffffff;
+  padding: 5rem 0 4rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  max-width: 900px;
+  margin: 0 auto 1.25rem;
+  color: #ffffff;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.hero .container > a {
+  display: inline-block;
+  background-color: var(--cor-destaque);
+  color: #ffffff;
+  padding: 0.9rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transicao);
+  margin-bottom: 3.5rem;
+}
+
+.hero .container > a:hover {
+  background-color: var(--cor-destaque-clara);
+  color: var(--cor-primaria);
+  transform: translateY(-2px);
+}
+
+.galeria-destaques {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.galeria-destaques figure {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  transition: var(--transicao);
+}
+
+.galeria-destaques figure:hover {
+  transform: translateY(-4px);
+  border-color: var(--cor-destaque-clara);
+}
+
+.galeria-destaques img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.galeria-destaques figcaption {
+  padding: 1rem;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+}
+
+/* ==========================================================================
+   4. ESTRUTURA GERAL DAS SEÇÕES
+   ========================================================================== */
+section {
+  padding: 4.5rem 0;
+}
+
+section:nth-of-type(even) {
+  background-color: var(--cor-superficie);
+}
+
+section h2 {
+  font-size: 2rem;
+  color: var(--cor-primaria);
+  margin-bottom: 0.75rem;
+}
+
+section h3 {
+  font-size: 1.4rem;
+  color: var(--cor-primaria);
+  margin: 2.5rem 0 1.25rem;
+}
+
+section > .container > p {
+  max-width: 800px;
+  margin-bottom: 2rem;
+  color: var(--cor-texto-suave);
+}
+
+/* ==========================================================================
+   5. SOBRE NÓS & EQUIPE
+   ========================================================================== */
+.pilares-institucionais,
+.grade-equipe,
+.grade-servicos,
+.grade-blog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.75rem;
+}
+
+.pilares-institucionais article,
+.grade-equipe article,
+.grade-servicos article,
+.grade-blog article {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-card);
+  transition: var(--transicao);
+}
+
+.pilares-institucionais article:hover,
+.grade-equipe article:hover,
+.grade-servicos article:hover,
+.grade-blog article:hover {
+  transform: translateY(-4px);
+  border-color: var(--cor-destaque);
+}
+
+.pilares-institucionais h3 {
+  margin-top: 0;
+  color: var(--cor-destaque);
+}
+
+.pilares-institucionais ul {
+  padding-left: 1.2rem;
+}
+
+.pilares-institucionais li {
+  margin-bottom: 0.5rem;
+}
+
+.grade-equipe img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.grade-equipe h4 {
+  font-size: 1.2rem;
+  color: var(--cor-primaria);
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================================================================
+   6. CATÁLOGO DE SERVIÇOS & TABELA COMPARATIVA
+   ========================================================================== */
+.grade-servicos svg {
+  color: var(--cor-destaque);
+  margin-bottom: 1rem;
+}
+
+.grade-servicos h3 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--cor-superficie);
+  border-radius: var(--raio-borda);
+  overflow: hidden;
+  box-shadow: var(--sombra-card);
+  margin-top: 1rem;
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  margin-bottom: 0.75rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  border: 1px solid var(--cor-borda);
+  text-align: left;
+}
+
+thead th {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+tbody th[scope="row"] {
+  background-color: #e2e8f0;
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+tfoot th,
+tfoot td {
+  background-color: #e0f2fe;
+  color: var(--cor-primaria);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   7. BLOG & CENTRAL DE CONTEÚDO
+   ========================================================================== */
+.blog-controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+}
+
+.blog-controles input[type="search"] {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  min-width: 240px;
+}
+
+.blog-controles ul {
+  list-style: none;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.blog-controles a {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background-color: #e0f2fe;
+  color: var(--cor-destaque);
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transicao);
+}
+
+.blog-controles a:hover {
+  background-color: var(--cor-destaque);
+  color: #ffffff;
+}
+
+.grade-blog img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.grade-blog span {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: var(--cor-destaque);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.grade-blog h3 {
+  margin: 0.75rem 0;
+  font-size: 1.2rem;
+}
+
+.grade-blog a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--cor-destaque);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.grade-blog a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   8. CONTATO & LOCALIZAÇÃO
+   ========================================================================== */
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+form fieldset {
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 1.75rem;
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+}
+
+form legend {
+  font-weight: 700;
+  color: var(--cor-primaria);
+  padding: 0 0.5rem;
+}
+
+form div {
+  margin-bottom: 1.1rem;
+}
+
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: 2px solid var(--cor-destaque-clara);
+  border-color: var(--cor-destaque);
+}
+
+form input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+form input[type="checkbox"] + label {
+  display: inline;
+  font-weight: 400;
+  font-size: 0.88rem;
+}
+
+form button {
+  background-color: var(--cor-destaque);
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+form button:hover {
+  background-color: var(--cor-primaria);
+}
+
+aside {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-card);
+}
+
+aside h3 {
+  margin-top: 0;
+}
+
+aside address {
+  font-style: normal;
+  margin-bottom: 1.25rem;
+}
+
+aside address p {
+  margin-bottom: 0.45rem;
+}
+
+aside address a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+}
+
+.mapa-container iframe {
+  width: 100%;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   9. RODAPÉ INSTITUCIONAL
+   ========================================================================== */
+footer {
+  background-color: var(--cor-primaria);
+  color: #cbd5e1;
+  padding: 3rem 0;
+}
+
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: var(--transicao);
+}
+
+footer a:hover {
+  color: var(--cor-destaque-clara);
+}
+
+.redes-sociais {
+  display: flex;
+  gap: 1rem;
+}
