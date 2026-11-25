@@ -14,8 +14,8 @@ Projeto desenvolvido para a **Avaliação Somativa (Sprint 1)** da Unidade Curri
 
 Clique nos links abaixo para executar a validação em tempo real diretamente no servidor do consórcio W3C:
 
-- 🔍 **[Validar HTML5 no W3C (Ao Vivo)](https://validator.w3.org/nu/?doc=https%3A%2F%2Fguilhermetomaz11.github.io%2Ftechnova-solutions%2Findex.html)**
-- 🎨 **[Validar CSS3 no W3C Jigsaw (Ao Vivo)]()**
+- 🔍 **[Validar HTML5 no W3C (Ao Vivo)](https://validator.w3.org/nu/?doc=https%3A%2F%2Fguilhermetomaz11.github.io%2Ftechnova-solutions%2F)**
+- 🎨 **[Validar CSS3 no W3C Jigsaw (Ao Vivo)](https://validator.w3.org/nu/?doc=https%3A%2F%2Fguilhermetomaz11.github.io%2Ftechnova-solutions%2Fcss%2Fstyle.css)**
 
 ---
 
