@@ -1,5 +1,5 @@
 /* =========================================================
-   1. VARIÁVEIS CSS (:root) E RESET
+1. VARIÁVEIS CSS (:root) E RESET
    ========================================================= */
 :root {
   --color-primary: #0284c7;
@@ -59,7 +59,7 @@ img {
 }
 
 /* =========================================================
-   2. CABEÇALHO E NAVEGAÇÃO (POSITION: STICKY)
+2. CABEÇALHO E NAVEGAÇÃO (POSITION: STICKY)
    ========================================================= */
 .site-header {
   position: sticky;
@@ -86,6 +86,21 @@ img {
   text-decoration: none;
   color: var(--color-dark);
   font-size: 1.35rem;
+}
+
+.logo svg rect,
+.logo svg polygon,
+.logo svg path {
+  transition: var(--transition);
+}
+
+.logo:hover svg rect {
+  fill: var(--color-primary);
+}
+
+.logo:hover svg polygon,
+.logo:hover svg path {
+  stroke: #ffffff;
 }
 
 .nav-list {
@@ -120,7 +135,7 @@ img {
 }
 
 /* =========================================================
-   3. BOTÕES E ANIMAÇÕES
+3. BOTÕES E ANIMAÇÕES
    ========================================================= */
 @keyframes fadeInUp {
   from {
@@ -146,13 +161,14 @@ img {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background: linear-gradient(90deg, var(--color-primary) 0%, #2563eb 100%);
   color: #ffffff;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
+  background: linear-gradient(90deg, var(--color-primary-dark) 0%, #1d4ed8 100%);
   transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(2, 132, 199, 0.3);
 }
 
 .btn-outline {
@@ -164,6 +180,7 @@ img {
 .btn-outline:hover {
   background-color: var(--color-primary);
   color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .btn-full {
@@ -171,7 +188,7 @@ img {
 }
 
 /* =========================================================
-   4. HERO SECTION & GALERIA DE DESTAQUES
+4. HERO SECTION & GALERIA DE DESTAQUES (SCROLL SNAP)
    ========================================================= */
 .hero {
   padding: 4.5rem 0;
@@ -222,20 +239,16 @@ img {
   box-shadow: var(--shadow);
 }
 
-.hero-media figcaption {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  margin-top: 0.6rem;
-  text-align: center;
-}
-
 .hero-highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
 }
 
 .highlight-item {
+  scroll-snap-align: start;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -262,7 +275,7 @@ img {
 }
 
 /* =========================================================
-   5. SEÇÕES GERAIS, SOBRE NÓS & EQUIPE
+5. SEÇÕES GERAIS, SOBRE NÓS & EQUIPE
    ========================================================= */
 .section {
   padding: 4.5rem 0;
@@ -310,8 +323,14 @@ img {
 }
 
 .pillar-card svg {
-  color: var(--color-primary);
+  stroke: var(--color-primary);
   margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.pillar-card:hover svg {
+  stroke: var(--color-dark);
+  transform: scale(1.15);
 }
 
 .pillar-card h3 {
@@ -349,6 +368,7 @@ img {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  object-position: top center;
 }
 
 .team-info {
@@ -375,7 +395,7 @@ img {
 }
 
 /* =========================================================
-   6. TABELA AVANÇADA (ZEBRADA)
+6. TABELA AVANÇADA (ZEBRADA)
    ========================================================= */
 .table-wrapper {
   overflow-x: auto;
@@ -413,6 +433,10 @@ img {
   background-color: #f8fafc;
 }
 
+.pricing-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
 .pricing-table tbody tr:hover {
   background-color: #e0f2fe;
 }
@@ -425,7 +449,7 @@ img {
 }
 
 /* =========================================================
-   7. BLOG & CENTRAL DE NOTÍCIAS
+7. BLOG & CENTRAL DE NOTÍCIAS (BADGE SOBREPOSTA)
    ========================================================= */
 .blog-controls {
   display: flex;
@@ -448,6 +472,7 @@ img {
 .blog-search input:focus {
   outline: none;
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
 }
 
 .category-list {
@@ -489,10 +514,28 @@ img {
   transform: translateY(-4px);
 }
 
-.post-card img {
-  width: 100%;
+.post-media {
+  position: relative;
   height: 190px;
+}
+
+.post-media img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+.post-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
 }
 
 .post-body {
@@ -500,17 +543,6 @@ img {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-}
-
-.post-tag {
-  align-self: flex-start;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--color-primary-dark);
-  background-color: #e0f2fe;
-  padding: 0.2rem 0.65rem;
-  border-radius: 4px;
-  margin-bottom: 0.6rem;
 }
 
 .post-meta {
@@ -537,14 +569,16 @@ img {
   font-weight: 600;
   text-decoration: none;
   font-size: 0.92rem;
+  transition: var(--transition);
 }
 
 .post-link:hover {
   text-decoration: underline;
+  transform: translateX(4px);
 }
 
 /* =========================================================
-   8. CONTATO, FORMULÁRIO & MAPA
+8. CONTATO, FORMULÁRIO & MAPA
    ========================================================= */
 .contact-grid {
   display: grid;
@@ -647,13 +681,14 @@ img {
 }
 
 .map-container iframe {
+  width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   display: block;
 }
 
 /* =========================================================
-   9. RODAPÉ & RESPONSIVIDADE
+9. RODAPÉ & RESPONSIVIDADE
    ========================================================= */
 .site-footer {
   background-color: var(--color-dark);
@@ -682,12 +717,25 @@ img {
 .social-links a {
   color: #cbd5e1;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   transition: var(--transition);
 }
 
 .footer-links a:hover,
 .social-links a:hover {
   color: #ffffff;
+}
+
+.social-links svg {
+  stroke: currentColor;
+  transition: var(--transition);
+}
+
+.social-links a:hover svg {
+  stroke: var(--color-accent);
+  transform: scale(1.15);
 }
 
 .back-to-top {
@@ -705,6 +753,15 @@ img {
   .team-grid,
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-highlights {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .highlight-item {
+    flex: 0 0 85%;
   }
 
   .hero-text h1 {
